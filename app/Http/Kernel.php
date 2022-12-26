@@ -2,10 +2,17 @@
 
 namespace App\Http;
 
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Routing\Route;
+use Illuminate\Routing\Router;
 
 class Kernel extends HttpKernel
 {
+    public function construct( Application $app, Router $router ) {
+        parent::__construct( $app, $router );
+        $this->prependToMiddlewarePriority(\App\Http\Middleware\ForceJsonResponse::class);
+    }
     /**
      * The application's global HTTP middleware stack.
      *
@@ -39,9 +46,10 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\ForceJsonResponse::class,
         ],
     ];
 
