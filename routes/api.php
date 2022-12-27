@@ -20,12 +20,12 @@ use Illuminate\Support\Facades\Route;
 */
 Route::middleware('auth:sanctum')->group(function(){
     Route::apiResource('artikel', ArtikelController::class);
-    Route::apiResource('kategori', KategoriController::class);
     Route::apiResource('barang', BarangController::class);
+    Route::apiResource('kategori', KategoriController::class);
     Route::apiResource('pembelian', PembelianController::class);
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
-Route::post('artikel/import', [ArtikelController::class, 'import']);
+Route::post('import', [ArtikelController::class, 'import']);
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);

@@ -9,7 +9,7 @@ use Illuminate\Routing\Router;
 
 class Kernel extends HttpKernel
 {
-    public function construct( Application $app, Router $router ) {
+    public function __construct( Application $app, Router $router ) {
         parent::__construct( $app, $router );
         $this->prependToMiddlewarePriority(\App\Http\Middleware\ForceJsonResponse::class);
     }

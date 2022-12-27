@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ArtikelResource;
 use App\Imports\ArtikelImport;
+use App\Imports\ExcelImport;
 use App\Models\Artikel;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -89,7 +90,7 @@ class ArtikelController extends Controller
 
     public function import(Request $request){
         $file=$request->file;
-        Excel::import(new ArtikelImport, $file);
+        Excel::import(new ExcelImport, $file);
         return ['Message'=>'Excel Berhasil di Import'];
     }
 }
