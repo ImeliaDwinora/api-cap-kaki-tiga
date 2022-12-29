@@ -41,7 +41,7 @@ class AuthController extends Controller
             return $this->fail('kredensial tidak tepat',null,401);
         }
         return $this->success(
-            Auth::user()->id,
+            'Login Berhasil!',
             ['token'=>Auth::user()->createToken('apiToken')->plainTextToken],
         );
     }
