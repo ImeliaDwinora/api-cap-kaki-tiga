@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('tgl_lahir')->nullable();
             $table->string('id_profil');
             $table->string('kota')->nullable();
+            $table->string('foto');
             $table->rememberToken();
             $table->timestamps();
         });
