@@ -2,11 +2,10 @@
 
 namespace App\Imports;
 
-use App\Models\Artikel;
+use App\Models\Pembelian;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class ArtikelImport implements ToModel
+class PembelianImport implements ToModel
 {
     /**
     * @param array $row
@@ -15,11 +14,13 @@ class ArtikelImport implements ToModel
     */
     public function model(array $row)
     {
-        return new Artikel([
-            'judul'=>$row[0],
-            'isi_artikel'=>$row[1],
+        return new Pembelian([
+            
             //
+            'tgl_pembelian'=>$row[0],
+            'barang_id'=>$row[1],
+            'total_brg'=>$row[2],
+            'user_id'=>$row[3],
         ]);
     }
-
 }

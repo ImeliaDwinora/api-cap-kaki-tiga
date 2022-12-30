@@ -15,7 +15,7 @@ class ExcelImport implements WithMultipleSheets
     {
         return [
             'artikels'=>new ArtikelImport(),
-            // 'kategoris'=>new KategoriImport(),
+            'kategoris'=>new KategoriImport(),
         ];
     }
 

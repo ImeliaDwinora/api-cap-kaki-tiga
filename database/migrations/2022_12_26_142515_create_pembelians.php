@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('total_brg');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('barang_id');
-            $table->timestamps();
+            $table->date('tgl_pembelian');
         
         });
     }

@@ -15,6 +15,7 @@ class Barang extends Model
         'kota_brg',
         'deskripsi',
         'stok',
+        'foto',
         'kategori_id',
     
     ];

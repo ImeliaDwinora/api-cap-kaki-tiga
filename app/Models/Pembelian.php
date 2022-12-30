@@ -12,5 +12,8 @@ class Pembelian extends Model
         'total_brg',
         'user_id',
         'barang_id',
+        'tgl_pembelian',
+
     ];
+    public $timestamps = false;
 }

@@ -6,7 +6,7 @@ use App\Models\Kategori;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class KategoriImport implements ToModel, WithHeadingRow
+class KategoriImport implements ToModel
 {
     /**
     * @param array $row
@@ -16,12 +16,8 @@ class KategoriImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new Kategori([
-            'nama_kategori'=>$row['nama_kategori'],
+            'nama_kategori'=>$row[0],
             //
         ]);
-    }
-    public function headingRow(): int
-    {
-        return 2;
     }
 }

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ArtikelResource;
 use App\Imports\ArtikelImport;
+use App\Imports\BarangImport;
 use App\Imports\ExcelImport;
+use App\Imports\PembelianImport;
 use App\Models\Artikel;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -91,6 +93,18 @@ class ArtikelController extends Controller
     public function import(Request $request){
         $file=$request->file;
         Excel::import(new ExcelImport, $file);
+        return ['Message'=>'Excel Berhasil di Import'];
+    }
+
+    public function barang_import(Request $request){
+        $file=$request->file;
+        Excel::import(new BarangImport, $file);
+        return ['Message'=>'Excel Berhasil di Import'];
+    }
+
+    public function pembelian_import(Request $request){
+        $file=$request->file;
+        Excel::import(new PembelianImport, $file);
         return ['Message'=>'Excel Berhasil di Import'];
     }
 }
