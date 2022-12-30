@@ -27,9 +27,6 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
-Route::post('import', [ArtikelController::class, 'import']);
-Route::post('barang/import', [ArtikelController::class, 'barang_import']);
-Route::post('pembelian/import', [ArtikelController::class, 'pembelian_import']);
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::get('user', function(){
