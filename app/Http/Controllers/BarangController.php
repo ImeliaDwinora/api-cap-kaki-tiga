@@ -37,9 +37,8 @@ class BarangController extends Controller
         }
     }
 
-    public function indexTertinggi(Request $request)
+    public function indexTertinggi($kategori)
     {
-            $kategori = $request->kategori;
             return $this->success(
                 'Penjualan Tertinggi',
                 BarangResource::collection(Barang::where('kategori_id', '=', $kategori)
