@@ -93,18 +93,18 @@ class ArtikelController extends Controller
     public function import(Request $request){
         $file=$request->file;
         Excel::import(new ExcelImport, $file);
-        return ['Message'=>'Excel Berhasil di Import'];
+        return ['Message'=>'kategori dan artikel Berhasil di Import'];
     }
 
-    public function barang_import(Request $request){
+    public function barangImport(Request $request){
         $file=$request->file;
         Excel::import(new BarangImport, $file);
-        return ['Message'=>'Excel Berhasil di Import'];
+        return ['Message'=>'barang Berhasil di Import'];
     }
 
-    public function pembelian_import(Request $request){
+    public function pembelianImport(Request $request){
         $file=$request->file;
         Excel::import(new PembelianImport, $file);
-        return ['Message'=>'Excel Berhasil di Import'];
+        return ['Message'=>'pembelian Berhasil di Import'];
     }
 }

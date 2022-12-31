@@ -15,8 +15,12 @@ class Barang extends Model
         'kota_brg',
         'deskripsi',
         'stok',
+        'terjual',
         'foto',
         'kategori_id',
-    
     ];
+    public function pembelians()
+    {
+        return $this->belongsTo(Pembelian::class, 'barang_id', 'id');
+    }
 }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('kota_brg');
             $table->text('deskripsi');
             $table->integer('stok');
+            $table->integer('terjual');
             $table->string('foto')->nullable();
             $table->unsignedBigInteger('kategori_id');
             $table->timestamps();

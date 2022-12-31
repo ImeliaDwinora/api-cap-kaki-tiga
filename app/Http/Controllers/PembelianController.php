@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BarangResource;
 use App\Http\Resources\PembelianResource;
+use App\Models\Barang;
 use App\Models\Pembelian;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -128,5 +130,14 @@ class PembelianController extends Controller
                 404,
             );
         }
+    }
+
+    public function pembelianUser(Request $request)
+    {
+            $userId = $request->userId;
+            return $this->success(
+                'Pembelian oleh User',
+                PembelianResource::collection(Pembelian::where('user_id', '=', $userId)->get()),
+            );
     }
 }

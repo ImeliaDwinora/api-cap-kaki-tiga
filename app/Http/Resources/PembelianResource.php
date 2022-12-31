@@ -15,10 +15,10 @@ class PembelianResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'tgl_pembelian' => $this->created_at,
+            'tgl_pembelian' => $this->tgl_pembelian,
             'total_brg' => $this->total_brg,
             'user_id' => $this->user_id,
-            'barang_id' => $this->barang_id,
+            'barang' => new BarangResource($this->barangs),
         ];
     }
 }

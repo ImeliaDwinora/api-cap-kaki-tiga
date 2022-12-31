@@ -14,35 +14,35 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validated = $request->validate([
-            'name'=>'required|string',
-            'email'=>'required|string|email|unique:users,email',
-            'password'=>'required|string|confirmed',
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users,email',
+            'password' => 'required|string|confirmed',
         ]);
-        $user=User::create([
-            'name'=>$request->name,
-            'password'=>bcrypt($request->password),
-            'email'=>$request->email,
-            'id_profil'=>strval(mt_rand (0000000000, 9999999999)),
+        $user = User::create([
+            'name' => $request->name,
+            'password' => bcrypt($request->password),
+            'email' => $request->email,
+            'id_profil' => strval(mt_rand(0000000000, 9999999999)),
 
         ]);
 
         return $this->success(
             'Registrasi Berhasil!',
-            ['token'=>$user->createToken('apiToken')->plainTextToken],
+            ['token' => $user->createToken('apiToken')->plainTextToken],
         );
     }
-    public function login(Request $request )
+    public function login(Request $request)
     {
         $validated = $request->validate([
-            'email'=>'required|string|email',
-            'password'=>'required|string',
+            'email' => 'required|string|email',
+            'password' => 'required|string',
         ]);
-        if(!Auth::attempt($validated)){
-            return $this->fail('kredensial tidak tepat',null,401);
+        if (!Auth::attempt($validated)) {
+            return $this->fail('kredensial tidak tepat', null, 401);
         }
         return $this->success(
             'Login Berhasil!',
-            ['token'=>Auth::user()->createToken('apiToken')->plainTextToken],
+            ['token' => Auth::user()->createToken('apiToken')->plainTextToken],
         );
     }
     public function logout()
@@ -51,7 +51,22 @@ class AuthController extends Controller
         return $this->success('Token Berhasil Dihapus',);
     }
 
+    public function check(Request $request)
+    {
+        $emailToChecked = $request->email;
+        $isEmailRegistered = User::where('email', $emailToChecked)->first();
+        if ($isEmailRegistered) {
+            return ['status' => true];
+        } else {
+            return ['status' => false];
+        }
+    }
 
-
-    //
+    public function show()
+    {
+        return $this->success(
+            null,
+            Auth::user(),
+        );
+    }
 }

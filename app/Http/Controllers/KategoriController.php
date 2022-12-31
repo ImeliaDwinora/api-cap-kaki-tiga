@@ -6,6 +6,7 @@ use App\Http\Resources\KategoriResource;
 use App\Models\Kategori;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KategoriController extends Controller
 {
@@ -21,7 +22,6 @@ class KategoriController extends Controller
         return $this->success(
             'data kategori',
             KategoriResource::collection(Kategori::all()),
-
         );
 
     }

@@ -15,14 +15,36 @@ class BarangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        return $this->success(
-            'data barang',
-            BarangResource::collection(Barang::all()),
+        $namaBarang = $request->query('namaBarang');
+        // $kategori = $request->query('kategori');
 
-        );
+        if($namaBarang) {
+            return $this->success(
+                'query barang',
+                BarangResource::collection(Barang::
+                where('nama_brg', 'LIKE', "%{$namaBarang}%")
+                ->where('kategori_id', '=', 1)
+                ->get()),
+            );
+        }
+        else {
+            return $this->success(
+                'data barang',
+                BarangResource::collection(Barang::inRandomOrder()->limit(30)->get()),
+            );
+        }
+    }
+
+    public function indexTertinggi(Request $request)
+    {
+            $kategori = $request->kategori;
+            return $this->success(
+                'Penjualan Tertinggi',
+                BarangResource::collection(Barang::where('kategori_id', '=', $kategori)
+                ->orderBy('terjual', 'desc')->limit(3)->get()),
+            );
     }
 
     /**
