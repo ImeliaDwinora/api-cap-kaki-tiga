@@ -11,6 +11,6 @@ class Artikel extends Model
     protected $fillable = [
         'judul',
         'isi_artikel',
-
+        'foto',
     ];
 }
