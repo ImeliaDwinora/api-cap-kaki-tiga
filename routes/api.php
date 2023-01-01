@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function(){
     Route::apiResource('artikel', ArtikelController::class);
     Route::apiResource('barang', BarangController::class);
+    Route::get('barang/kategori/{kategori}', [BarangController::class, 'barangPerKategori']);
     Route::get('barang/tertinggi/{kategori}', [BarangController::class, 'indexTertinggi']);
     Route::apiResource('kategori', KategoriController::class);
     Route::apiResource('pembelian', PembelianController::class);

@@ -22,6 +22,7 @@ class BarangResource extends JsonResource
             'deskripsi' => $this->deskripsi,
             'stok' => $this->stok,
             'terjual' => $this->terjual,
+            'foto' => $this->foto,
             'kategori_id' => $this->kategori_id, 
         ];
     }

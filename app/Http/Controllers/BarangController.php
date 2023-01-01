@@ -157,4 +157,22 @@ class BarangController extends Controller
             );
         }
     }
+    public function barangPerKategori(Request $request, $kategori)
+    {
+        $query = $request->query('limit');
+
+        if($query) {
+            return $this->success(
+                'Barang per Kategori',
+                BarangResource::collection(Barang::inRandomOrder()->limit($query)->where('kategori_id', '=', $kategori)->get()),
+            );
+        }
+        else {
+            return $this->success(
+                'Barang per Kategori',
+                BarangResource::collection(Barang::all()->where('kategori_id', '=', $kategori)),
+            );
+        }
+        
+    }
 }

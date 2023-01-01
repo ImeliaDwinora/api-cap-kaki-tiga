@@ -20,14 +20,24 @@ class ArtikelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return $this->success(
-            'data artikel',
-            ArtikelResource::collection(Artikel::all()),
+        $query = $request->query('limit');
 
-        );
+        if($query) {
+            return $this->success(
+                'data artikel',
+                ArtikelResource::collection(Artikel::inRandomOrder()->limit($query)->get()),
+            );
+        }
+        else {
+            return $this->success(
+                'data artikel',
+                ArtikelResource::collection(Artikel::all()),
+            );
+        }
+        
 
     }
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_brg');
             $table->integer('harga_brg');
-            $table->integer('satuan');
+            $table->float('satuan', 8, 1);
             $table->string('kota_brg');
             $table->text('deskripsi');
             $table->integer('stok');
