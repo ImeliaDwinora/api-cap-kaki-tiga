@@ -12,5 +12,10 @@ class Artikel extends Model
         'judul',
         'isi_artikel',
         'foto',
+        'kategori_id',
     ];
+    public function kategoris()
+    {
+        return $this->belongsTo(Kategori::class, 'kategori_id', 'id');
+    }
 }

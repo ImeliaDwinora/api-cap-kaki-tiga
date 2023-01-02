@@ -6,6 +6,7 @@ use App\Http\Resources\ArtikelResource;
 use App\Imports\ArtikelImport;
 use App\Imports\BarangImport;
 use App\Imports\ExcelImport;
+use App\Imports\KategoriImport;
 use App\Imports\PembelianImport;
 use App\Models\Artikel;
 use App\Traits\ApiResponse;
@@ -100,11 +101,6 @@ class ArtikelController extends Controller
         //
     }
 
-    public function import(Request $request){
-        $file=$request->file;
-        Excel::import(new ExcelImport, $file);
-        return ['Message'=>'kategori dan artikel Berhasil di Import'];
-    }
 
     public function barangImport(Request $request){
         $file=$request->file;
@@ -116,5 +112,15 @@ class ArtikelController extends Controller
         $file=$request->file;
         Excel::import(new PembelianImport, $file);
         return ['Message'=>'pembelian Berhasil di Import'];
+    }
+    public function kategoriImport(Request $request){
+        $file=$request->file;
+        Excel::import(new KategoriImport, $file);
+        return ['Message'=>'kategori Berhasil di Import'];
+    }
+    public function artikelImport(Request $request){
+        $file=$request->file;
+        Excel::import(new ArtikelImport, $file);
+        return ['Message'=>'artikel Berhasil di Import'];
     }
 }

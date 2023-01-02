@@ -18,6 +18,7 @@ class ArtikelImport implements ToModel
         return new Artikel([
             'judul'=>$row[0],
             'isi_artikel'=>$row[1],
+            'kategori_id'=>$row[2],
             //
         ]);
     }

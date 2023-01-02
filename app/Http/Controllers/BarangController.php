@@ -18,15 +18,29 @@ class BarangController extends Controller
     public function index(Request $request)
     {
         $namaBarang = $request->query('namaBarang');
-        // $kategori = $request->query('kategori');
+        $kategori = $request->query('kategori');
+        $sort = $request->query('sort');
 
-        if($namaBarang) {
+        if($namaBarang && !$kategori && !$sort) {
+            return $this->success(
+                'query barang',
+                BarangResource::collection(Barang::where('nama_brg', 'LIKE', "%{$namaBarang}%")->get()),
+            );
+        }
+
+        else if($namaBarang && $kategori && !$sort) {
             return $this->success(
                 'query barang',
                 BarangResource::collection(Barang::
                 where('nama_brg', 'LIKE', "%{$namaBarang}%")
-                ->where('kategori_id', '=', 1)
+                ->where('kategori_id', '=', $kategori)
                 ->get()),
+            );
+        }
+        else if($sort && !$namaBarang && !$kategori) {
+            return $this->success(
+                'query barang',
+                BarangResource::collection(Barang::orderBy($sort, 'desc')->limit(24)->get()),
             );
         }
         else {
@@ -167,6 +181,7 @@ class BarangController extends Controller
                 BarangResource::collection(Barang::inRandomOrder()->limit($query)->where('kategori_id', '=', $kategori)->get()),
             );
         }
+        
         else {
             return $this->success(
                 'Barang per Kategori',

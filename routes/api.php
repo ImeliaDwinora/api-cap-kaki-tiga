@@ -39,7 +39,8 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('user', function(){
     return User::all();
 });
-Route::post('import', [ArtikelController::class, 'import']);
+Route::post('kategori/import', [ArtikelController::class, 'kategoriImport']);
+Route::post('artikel/import', [ArtikelController::class, 'artikelImport']);
 Route::post('barang/import', [ArtikelController::class, 'barangImport']);
 Route::post('pembelian/import', [ArtikelController::class, 'pembelianImport']);
 

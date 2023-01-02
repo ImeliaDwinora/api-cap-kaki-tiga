@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('artikels', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul');
-            $table->text('isi_artikel');
-            $table->string('foto')->nullable();
-            $table->unsignedBigInteger('kategori_id');
-            $table->timestamps();
-        });
+        //
+        Schema::table('artikels', function (Blueprint $table) {
+            $table->foreign('kategori_id')->references('id')->on('kategoris');
+           });
     }
 
     /**
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('artikels');
+        //
     }
 };

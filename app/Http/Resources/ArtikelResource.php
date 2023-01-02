@@ -18,6 +18,7 @@ class ArtikelResource extends JsonResource
         'judul' => $this->judul,
         'isi_artikel' => $this->isi_artikel,
         'foto' => $this->foto,
+        'kategori' => $this->kategoris->nama_kategori,
        ];
     }
 }
