@@ -27,8 +27,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('barang/tertinggi/{kategori}', [BarangController::class, 'indexTertinggi']);
     Route::apiResource('kategori', KategoriController::class);
     Route::apiResource('pembelian', PembelianController::class);
-    Route::get('pembelian/user/{userId}', [PembelianController::class, 'pembelianUser']);
-    Route::get('pembelian/{kategori}/user/{userId}', [PembelianController::class, 'pembelianUserPerKategori']);
+    Route::get('pembelian/{kategori}/user/{userId}', [PembelianController::class, 'pembelianUser']);
     Route::post('checkout', [CheckoutController::class, 'checkout']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('user/current', [AuthController::class, 'show']);

@@ -132,21 +132,19 @@ class PembelianController extends Controller
         }
     }
 
+    
     public function pembelianUser(Request $request)
     {
-            $userId = $request->userId;
-            return $this->success(
-                'Pembelian oleh User',
-                PembelianResource::collection(Pembelian::where('user_id', '=', $userId)->get()),
-            );
-    }
-    public function pembelianUserPerKategori(Request $request)
-    {
-        
             $userId = $request->userId;
             $kategori = $request->kategori;
             // Cara orang bodoh
             // cari tau query relationship kalau ada waktu
+            if($kategori == 0) {
+                return $this->success(
+                    'Pembelian oleh User',
+                    PembelianResource::collection(Pembelian::where('user_id', '=', $userId)->get()),
+                );
+            }
             if($kategori == 1) {
                 $pembelian = Pembelian::where('user_id', '=', $userId)->whereBetween('barang_id', [1, 25])->get();
             }
