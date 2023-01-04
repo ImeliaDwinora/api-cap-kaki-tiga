@@ -69,4 +69,26 @@ class AuthController extends Controller
             Auth::user(),
         );
     }
+
+    public function update(Request $request, $id)
+    {
+
+        $validated = $request->validate([
+            'nama_brg' => 'string',
+            'harga_brg' => 'integer',
+            'satuan' => 'integer',
+            'kota_brg' => 'string',
+            'deskripsi' => 'string',
+            'stok' => 'integer',
+            'kategori_id' => 'integer',
+            'foto' => 'string',
+
+        ]);
+        $user = User::find($id);
+        $user->update($validated);
+        return $this->success(
+                'Berhasil Mengupdate User',
+                null,
+            );
+    }
 }

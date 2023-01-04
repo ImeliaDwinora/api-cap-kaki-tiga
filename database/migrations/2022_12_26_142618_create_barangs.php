@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->integer('stok');
             $table->integer('terjual');
-            $table->string('foto')->nullable();
+            $table->text('foto')->nullable();
             $table->unsignedBigInteger('kategori_id');
             $table->timestamps();
         });

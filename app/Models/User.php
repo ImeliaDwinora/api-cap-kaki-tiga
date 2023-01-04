@@ -26,6 +26,7 @@ class User extends Authenticatable
         'tgl_lahir',
         'kota',
         'id_profil',
+        'foto',
     ];
 
     /**

@@ -31,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('checkout', [CheckoutController::class, 'checkout']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('user/current', [AuthController::class, 'show']);
+    Route::patch('user/current/edit/{id}', [AuthController::class, 'update']);
 });
 
 Route::post('check', [AuthController::class, 'check']);

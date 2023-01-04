@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->text('isi_artikel');
-            $table->string('foto')->nullable();
+            $table->text('foto')->nullable();
             $table->unsignedBigInteger('kategori_id');
             $table->timestamps();
         });
