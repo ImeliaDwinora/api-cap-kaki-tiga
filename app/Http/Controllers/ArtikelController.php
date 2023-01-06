@@ -8,6 +8,7 @@ use App\Imports\BarangImport;
 use App\Imports\ExcelImport;
 use App\Imports\KategoriImport;
 use App\Imports\PembelianImport;
+use App\Imports\YoutubeImport;
 use App\Models\Artikel;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -122,5 +123,10 @@ class ArtikelController extends Controller
         $file=$request->file;
         Excel::import(new ArtikelImport, $file);
         return ['Message'=>'artikel Berhasil di Import'];
+    }
+    public function YoutubeImport(Request $request){
+        $file=$request->file;
+        Excel::import(new YoutubeImport, $file);
+        return ['Message'=>'Youtube Berhasil di Import'];
     }
 }

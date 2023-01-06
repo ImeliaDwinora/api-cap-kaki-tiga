@@ -7,6 +7,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PembelianController;
 use App\Models\User;
+use App\Models\Youtube;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,13 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('user/current', [AuthController::class, 'show']);
     Route::patch('user/current/edit/{id}', [AuthController::class, 'update']);
+    Route::get('youtube', function(){
+        return[
+            "status"=>true, 
+            "message"=>"video youtube",
+            "data"=>Youtube::all()
+        ];
+    });
 });
 
 Route::post('check', [AuthController::class, 'check']);
