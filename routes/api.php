@@ -52,4 +52,5 @@ Route::post('kategori/import', [ArtikelController::class, 'kategoriImport']);
 Route::post('artikel/import', [ArtikelController::class, 'artikelImport']);
 Route::post('barang/import', [ArtikelController::class, 'barangImport']);
 Route::post('pembelian/import', [ArtikelController::class, 'pembelianImport']);
+Route::post('youtube/import', [ArtikelController::class,'YoutubeImport']);
 
