@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('jantan');
             $table->integer('betina');
             $table->string('foto');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

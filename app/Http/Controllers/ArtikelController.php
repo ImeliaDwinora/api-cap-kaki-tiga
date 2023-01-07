@@ -6,6 +6,7 @@ use App\Http\Resources\ArtikelResource;
 use App\Imports\ArtikelImport;
 use App\Imports\BarangImport;
 use App\Imports\ExcelImport;
+use App\Imports\KandangImport;
 use App\Imports\KategoriImport;
 use App\Imports\PembelianImport;
 use App\Imports\YoutubeImport;
@@ -127,6 +128,11 @@ class ArtikelController extends Controller
     public function YoutubeImport(Request $request){
         $file=$request->file;
         Excel::import(new YoutubeImport, $file);
-        return ['Message'=>'Youtube Berhasil di Import'];
+        return ['Message'=>'Youtube: Berhasil di Import'];
+    }
+    public function KandangImport(Request $request){
+        $file=$request->file;
+        Excel::import(new KandangImport, $file);
+        return ['Message'=>'Kandang: Berhasil di Import'];
     }
 }

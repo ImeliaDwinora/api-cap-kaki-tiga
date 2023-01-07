@@ -15,6 +15,7 @@ class Kandang extends Model
         'jantan',
         'betina',
         'foto',
+        'user_id',
        
     ];
 }
