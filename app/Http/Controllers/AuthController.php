@@ -74,13 +74,11 @@ class AuthController extends Controller
     {
 
         $validated = $request->validate([
-            'nama_brg' => 'string',
-            'harga_brg' => 'integer',
-            'satuan' => 'integer',
-            'kota_brg' => 'string',
-            'deskripsi' => 'string',
-            'stok' => 'integer',
-            'kategori_id' => 'integer',
+            'name' => 'string',
+            'no_telp' => 'string',
+            'alamat' => 'string',
+            'tgl_lahir' => 'string',
+            'kota' => 'string',
             'foto' => 'string',
 
         ]);
