@@ -23,7 +23,8 @@ class BarangImport implements ToModel
             'deskripsi'=>$row[4],
             'stok'=>$row[5],
             'terjual'=>$row[6],
-            'kategori_id'=>$row[7],
+            'foto'=>$row[7],
+            'kategori_id'=>$row[8],
         ]);
     }
 }
