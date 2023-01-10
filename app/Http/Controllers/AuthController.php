@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 
@@ -45,6 +47,39 @@ class AuthController extends Controller
             ['token' => Auth::user()->createToken('apiToken')->plainTextToken],
         );
     }
+
+    public function resetPassword(Request $request)
+    {
+        $email = $request->email;
+        $checkEmail = User::where('email', '=', $email)->first();
+
+        if($checkEmail) {
+            $randomString = Str::random(8);
+            $newPassword = bcrypt($randomString);
+            $checkEmail->update(['password' => $newPassword]);
+            return $this->success($randomString, null);
+        }
+        else {
+            return ["message" => "Email belum terdaftar"];
+        }
+    }
+
+    public function setPassword(Request $request)
+    {
+        $email = $request->email;
+        $checkEmail = User::where('email', '=', $email)->first();
+        $status = Hash::check($request->token, $checkEmail->password);
+        if($status) {
+            $newPassword = bcrypt($request->password);
+            $checkEmail->update(['password' => $newPassword]);
+            return $this->success("Berhasil ganti password, silahkan login", null);
+        }
+        else {
+            return ['message' => 'tidak bisa ganti password', 'status' => $status];
+        }
+    }
+
+
     public function logout()
     {
         Auth::user()->tokens()->delete();

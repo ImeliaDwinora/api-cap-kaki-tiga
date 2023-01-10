@@ -53,6 +53,8 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::post('check', [AuthController::class, 'check']);
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+Route::post('password/reset', [AuthController::class, 'resetPassword']);
+Route::post('password/set', [AuthController::class, 'setPassword']);
 Route::get('user', function () {
     return User::all();
 });
@@ -62,5 +64,6 @@ Route::post('barang/import', [ArtikelController::class, 'barangImport']);
 Route::post('pembelian/import', [ArtikelController::class, 'pembelianImport']);
 Route::post('youtube/import', [ArtikelController::class, 'YoutubeImport']);
 Route::post('kandang/import', [ArtikelController::class, 'KandangImport']);
+
 
 
