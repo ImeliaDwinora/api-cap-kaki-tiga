@@ -60,7 +60,7 @@ class AuthController extends Controller
             return $this->success($randomString, null);
         }
         else {
-            return ["message" => "Email belum terdaftar"];
+            return ["status" => false, "message" => "Email belum terdaftar"];
         }
     }
 
